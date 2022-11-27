@@ -1,4 +1,11 @@
 # Nick-s-Weather-Dashboard
+RESOURCES USED:https://cdnjs.cloudflare.com/
+https://getbootstrap.com/docs/5.2/getting-started/contents/
+https://fontawesome.com/kits
+https://www.w3schools.com/xml/ajax_intro.asp
+
+
+
 
 Use the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for cities. The base URL should look like the following: `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate.
 

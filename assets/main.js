@@ -1,8 +1,8 @@
 //We need to store the value of the input\\
 // The function could look like this. 
-let town =$("#searchWord").val();
+let city =$("#searchWord").val();
 // Next we will need to store the api key
-const apiKey = "9dd247337ad4b6b047a2f9a30dacaf93"
+const apiKey ="9dd247337ad4b6b047a2f9a30dacaf93"
 
 let date = new Date();
 
@@ -25,9 +25,11 @@ $("#searchBtn").on("click",function(){
     $("#SearchTerm").val("");
 
     //the url to call the api is used here
-    const queryUrl= "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
+    const queryUrl= "api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
+    //var queryUrl2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + a + "&lon=" + b + "&exclude=minutely,hourly&appid=apiKey&units=imperial";
+
     $.ajax({
-        url: queryUrl,
+        url:queryUrl,
         method: "GET"
     })
     .then(function(response){

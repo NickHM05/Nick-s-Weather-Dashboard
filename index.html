@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--We will need the FOnt Awesome Link here-->
+    <!--We will need the Font Awesome Link here-->
     <script src="https://kit.fontawesome.com/70605e3c33.js" crossorigin="anonymous"></script>
     <!--This will be where the Bootstrap Links are.-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -34,7 +34,7 @@
         <div class="Row">
 
             <!--Here will be the column-->
-            <div class="col-md-3 bg-light pt-3 pb-3">
+            <div class="col-lg-3 bg-light pt-3 pb-3">
 
                 <h3>Search for a City:</h3>
 
@@ -45,7 +45,29 @@
                     <button id="searchBtn" class="btn btn-primary" type="button" id="button-addon2"><i
                             class="far fa-search"></i></button>
                 </div>
+                <!--The card start.-->
+                <div class="card">
+                    <ul class="list-group list-group-flush list">
+                        <li class="list-group-item"></li>
+                    </ul>
+                </div>
+            </div>
+            <!--The column will start here for the current city picked by the user-->
+            <div class="col-lg-9">
+                <div id="currentCity" class="mt-4">
 
+                </div>
+            </div>
+            <!--This will be where the forecast container is.-->
+            <div class="mt-4 col-md-12">
+
+                <h4 id="forecastH5" class="mt-3 hide">Next 5-Day Forecast:</h4>
+
+                <!--Next is the forecast row-->
+                <div id="forecast" class="row">
+
+
+                </div>
             </div>
         </div>
     </div>
@@ -53,7 +75,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
         integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
         crossorigin="anonymous">
-        </script>"
+        </script>
     <script src="assets/main.js"></script>
 </body>
 

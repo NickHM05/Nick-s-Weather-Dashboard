@@ -41,3 +41,5 @@ $("#searchBtn").on("click",function(){
 
     })
 });
+//use activity 21 and 22 to help you via line 35 to 39
+//Need to pull the data from 2 api endpoints from the weathermap. one is the longitude and lat. The other is to pull the data from that search. 

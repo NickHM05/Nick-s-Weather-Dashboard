@@ -1,12 +1,13 @@
 //We need to store the value of the input\\
 // The function could look like this. 
-let city =$("#searchWord").val();
+let city =$("#searchTerm").val();
 // Next we will need to store the api key
-const apiKey ="9dd247337ad4b6b047a2f9a30dacaf93"
+const apiKey ="&appid=9dd247337ad4b6b047a2f9a30dacaf93";
+
 
 let date = new Date();
 
-$("SearchTerm").keypress(function(event) {
+$("searchTerm").keypress(function(event) {
 
     if (event.keyCode === 13) {
         event.preventDefault();
@@ -14,25 +15,25 @@ $("SearchTerm").keypress(function(event) {
     }
 });
 
-$("#searchBtn").on("click",function(){
+$("#searchBtn").on("click", function() {
 
     $('#forecastH5').addClass('show');
 
     // will take the value from the user as input
-    city =$("#SearchTerm").val("");
+    city =$("#searchTerm").val();
 
     //how to clear the input box
-    $("#SearchTerm").val("");
-
+    $("#searchTerm").val("");
+    console.log(city)
     //the url to call the api is used here
-    const queryUrl= "api.openweathermap.org/data/2.5/forecast?q=" + city + apiKey;
+    const queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey;
     //var queryUrl2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + a + "&lon=" + b + "&exclude=minutely,hourly&appid=apiKey&units=imperial";
 
     $.ajax({
-        url:queryUrl,
+        url: queryUrl,
         method: "GET"
     })
-    .then(function(response){
+    .then(function (response){
 
         console.log(response)
 

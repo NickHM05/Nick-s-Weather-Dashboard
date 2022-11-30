@@ -2,7 +2,7 @@
 RESOURCES USED:https://cdnjs.cloudflare.com/
 https://getbootstrap.com/docs/5.2/getting-started/contents/
 https://fontawesome.com/kits
-https://www.w3schools.com/xml/ajax_intro.asp
+https://www.w3schools.com/xml/ajax_intro.asp  
 
 
 

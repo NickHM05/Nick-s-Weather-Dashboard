@@ -9,6 +9,7 @@ let date = new Date();
 
 $("SearchTerm").keypress(function(event) {
 
+//keycode 13 is when tthe enter key is used on the keyboard
     if (event.keyCode === 13) {
         event.preventDefault();
         $("#searchBtn").click('show');
@@ -47,8 +48,32 @@ $("#searchBtn").on("click", function() {
         console.log(response.main.humidity)
         console.log(response.wind.speed)
 
-        
+        getCurrentConditions(response);
         
     })
 });
 
+
+//The work in this function will result in The card showing the city and its Data on the webpage
+function getCurrentConditions (response) {
+    let Temp =(response.main.temp);
+    Temp=(Temp);
+
+    $("#currentCity").empty();
+
+    // get and set the content of the cards for the user to see
+    const card = $("<div>").addClass("card");
+    const cardBody = $("<div>").addClass("card-body");
+    const city = $("<h4>").addClass("card-title").text(response.name);
+    const cityDate = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
+    const temperature = $("<p>").addClass("card-text current-temp").text("Temperature: "+ Temp + "°F");
+    const humidity = $("<p>").addClass("card-text current-humdity").text("Humidity: "+ response.main.humidity + "%");
+    const wind = $("<p>").addClass("card-text current-wind").text("Wind Speed is: " + response.wind.speed + "MPH");
+    const image = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
+
+    // adding the data to the page
+    city.append(cityDate, image)
+    cardBody.append(city,temperature,humidity,wind);
+    card.append(cardBody);
+    $("#currentCity").append(card)
+}

@@ -39,13 +39,13 @@ function conversion(val) {
   return ((val-273.15)* 1.80 +32).toFixed(2)
 }
 
-button.addEventListener('click', getWeather);
+//button.addEventListener('click', getWeather);
 button.addEventListener('click', setStorage);
-button.addEventListener('click', displaydata)
+//button.addEventListener('click', displaydata)
 
 
-function getWeather() {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputValue.value + "&appid=" + apiKey)
+function getWeather(city) {
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey)
         .then((response) => {
             response.json().then((data) => {
                 var lat = data.coord.lat
@@ -115,13 +115,23 @@ function setStorage() {
     getWeather(search);
     searchHistory.push(search);
     localStorage.setItem("search", JSON.stringify(searchHistory));
-
+    document.querySelector("#searchHistory").innerHTML= ``;
+    displaydata()
+    
+}
+function newWeather(event){
+    getWeather(event.target.textContent)
 }
 function displaydata() {
-
-    document.querySelector("#searchHistory").innerHTML = `<button class="btn btn-primary">${searchHistory[0]}</button>`;
-    displayUpdates();
+    for (var i=0;i<searchHistory.length;i++){
+        document.querySelector("#searchHistory").innerHTML+= `<button class="btn btn-primary" onclick= "newWeather(event)">${searchHistory[i]}</button>`;
+    }
+    
+    //displayUpdates();
 };
+
+displaydata()
+
 //function displayUpdates()
 
 /*function displayUpdates (){

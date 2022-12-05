@@ -15,14 +15,14 @@
 
 <body>
   <header>
-    <h1>Weather Dashboard</h1>
+    <h1>Nick's Weather Dashboard</h1>
     <p id="date1"></p>
   </header>
   <div id="container-fluid mainCon">
     <div class="row">
       <div class="col-sm-4 bg-light">
         <div id="citySearch" class="row">
-          <label>Search for a city:</label>
+          <label>Search for a City:</label>
 
           <div class="input-group mb-3">
             <input type="text" class="form-control textValue" placeholder="Enter city" id="cityinput">
@@ -39,7 +39,7 @@
       </div>
 
 
-
+<!--The first card for Today's date is displayed here-->
       <div class="col-sm-8">
         <div class="today row ml-2 border border-dark rounded">
           <section class="display">
@@ -66,6 +66,10 @@
             </div>
           </section>
         </div>
+
+        <!--The next 5 days from todays forecast-->
+
+        <!--Tomorrows weather data is displayed here-->
         <div class=" col-sm-12" id="5day">
           <h3>5-Day Forecast:</h3>
         </div>
@@ -91,7 +95,7 @@
             </p>
           </div>
 
-          
+          <!--The day after Tomorrow is displayed here-->
           <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
             <p id="date2"></p>
             <p id="img1"></p>
@@ -111,7 +115,7 @@
               </span>
             </p>
           </div>
-
+          <!--The 3rd day from todays date is displayed here-->
           <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
             <p id="date3"></p>
             <p id="img2"></p>
@@ -131,28 +135,29 @@
               </span>
             </p>
           </div>
-
+          <!--The 4th day from todays date is displayed here-->
           <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
             <p id="date4"></p>
             <p id="img3"></p>
             <p>Temp:
               <span id="temp3"></span>
             </p>
-
+            <!--Humidty is displayed here-->
             <p>Humidity:
               <span id="Humidity3"></span>
             </p>
             <p>Wind:
               <span id="Wind3"></span>
             </p>
-          
-          <p>Icon:
-            <span id="icon3">
-              <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
-            </span>
-          </p>
+
+            <p>Icon:
+              <span id="icon3">
+                <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
+              </span>
+            </p>
           </div>
 
+          <!--The 5th day from todays date is displayed here-->
           <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
             <p id="date5"></p>
             <p id="img4"></p>
@@ -166,12 +171,12 @@
             <p>Wind:
               <span id="Wind4"></span>
             </p>
-          <p>Icon:
-            <span id="icon4">
-              <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
-            </span>
-          </p>
-        </div>
+            <p>Icon:
+              <span id="icon4">
+                <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

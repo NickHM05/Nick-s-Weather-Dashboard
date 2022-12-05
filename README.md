@@ -1,6 +1,11 @@
 # Nick-s-Weather-Dashboard
-## Description
 
+## Description
+My motivation behind creating this weather dashboard was to get used to using the server side api known as https://openweathermap.org/forecast5 and to create an application out of it. 
+
+This was built to show the weather for 5 days from today from the user's city input choice. Once the city is picked the temp, humidity,wind, and the icon is shown with the next 5 days of the same data.The city that was used as input each time will show up as a clickable button for the user to go back to and use in case they wanted to. 
+
+I learned through a lot of trial and error that making another function is much easier than trying to have one function do a lot of the work. That sounds simple enough to be thought of beforehand but in practice it was learned. My tutor taught me that when we worked on setting the local storage when we made the displaydata() function. I learned how to use the weather api to get the input city then to get the geo data out of it such as longitude and lattitude to find the city weather data. The api had to be called using their specific search parameters. There might have been many ways to call the api but you could only use the ones based off of what you would pay and that gave me a lot of trouble when i tried to use them and they didint work so i had to use the geocoding section and the api call referenced in the read me to the challenge. I learned that going through and checking to see how you called the data in your code was important and how it can dependant the api call subscription, if the api key is right, and the function used to call it and input data into the api through jquery. I tried using ajax, and other methods to call it but jquery was more simple for me to use.    
 ## Table of Contents
 
 - [Description](#description)
@@ -13,17 +18,16 @@
 
 My website:https://nickhm05.github.io/Nick-s-Weather-Dashboard/
 URL of the github repository:https://github.com/NickHM05/Nick-s-Weather-Dashboard
+
 ## Usage
 ![Screenshot of the page](./images/weatherdashboard.png)
-
-## Credits
-
-## Usage 
 :https://cdnjs.cloudflare.com/
 https://getbootstrap.com/docs/5.2/getting-started/contents/
 https://fontawesome.com/kits
 https://www.w3schools.com/xml/ajax_intro.asp  
 https://api.jquery.com/
+
+
 
 ## Credits
  Collaborators:
@@ -36,33 +40,36 @@ Resource used:https://cdnjs.com/libraries/jquery
 https://momentjs.com/
 dayjs code from last mini project 
 
+## License
+license:(./LICENSE)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+MIT License
+
+Copyright (c) 2022 NicholasHM05
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
-Use the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for cities. The base URL should look like the following: `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate.
 
-**Hint**: Using the 5 Day Weather Forecast API, you'll notice that you will need to pass in coordinates instead of just a city name. Using the OpenWeatherMap APIs, how could we retrieve geographical coordinates given a city name?
 
-You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
 
-## User Story
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
 
-## Acceptance Criteria
-
-```
-Done GIVEN a weather dashboard with form inputs
-Done WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-Done WHEN I view current weather conditions for that city
-Done THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
-Done WHEN I view future weather conditions for that city
-Done THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
 

@@ -26,6 +26,8 @@ https://getbootstrap.com/docs/5.2/getting-started/contents/
 https://fontawesome.com/kits
 https://www.w3schools.com/xml/ajax_intro.asp  
 https://api.jquery.com/
+https://github.com/Joelynn94/weather-dashboard/blob/master/assets/js/main.js
+Tried to work through and see what each part did in the vs code and learned about the different api calls that people coould use and the functions. His weather conversion math made the most sense when changing over from celsius to fahrenheit
 
 
 
@@ -39,6 +41,7 @@ https://api.jquery.com/
 Resource used:https://cdnjs.com/libraries/jquery
 https://momentjs.com/
 dayjs code from last mini project 
+https://en.wikipedia.org/wiki/Degree_symbol
 
 ## License
 license:(./LICENSE)

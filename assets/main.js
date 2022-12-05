@@ -47,6 +47,7 @@ function getWeather(city) {
 
                         //This is Today's Date and data info
                         document.querySelector(".cardTodayCityName").innerHTML = day5data.city.name;
+                        //time is set to current at [0]
                         document.querySelector("#temp").innerHTML = `<span>${conversion(day5data.list[0].main.temp)} °F</span>`;
                         document.querySelector('#Humidity').innerHTML = `<span>${day5data.list[0].main.humidity} %<span>`;
                         document.querySelector('#wind').innerHTML = `<span>${day5data.list[0].wind.speed} m/s<span>`;

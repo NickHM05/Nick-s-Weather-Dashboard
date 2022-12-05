@@ -1,11 +1,40 @@
 # Nick-s-Weather-Dashboard
-RESOURCES USED:https://cdnjs.cloudflare.com/
+## Description
+
+## Table of Contents
+
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+
+## Installation
+
+My website:https://nickhm05.github.io/Nick-s-Weather-Dashboard/
+URL of the github repository:https://github.com/NickHM05/Nick-s-Weather-Dashboard
+## Usage
+![Screenshot of the page](./images/weatherdashboard.png)
+
+## Credits
+
+## Usage 
+:https://cdnjs.cloudflare.com/
 https://getbootstrap.com/docs/5.2/getting-started/contents/
 https://fontawesome.com/kits
 https://www.w3schools.com/xml/ajax_intro.asp  
 https://api.jquery.com/
-# Collaborators:
-https://github.com/kristermyr
+
+## Credits
+ Collaborators:
+- Nicholas Mamberger (author) https://github.com/NickHM05
+- Krister Myr https://github.com/kristermyr
+- Salahuddin Imdad https://github.com/Sal8298
+
+
+Resource used:https://cdnjs.com/libraries/jquery
+https://momentjs.com/
+dayjs code from last mini project 
 
 
 
@@ -36,3 +65,4 @@ Done THEN I am presented with a 5-day forecast that displays the date, an icon r
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
+

@@ -5,79 +5,193 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--We will need the Font Awesome Link here-->
-
+  <link rel="stylesheet" href="./assets/styles.css" />
   <script src="https://kit.fontawesome.com/70605e3c33.js" crossorigin="anonymous"></script>
-  <!--This will be where the Bootstrap Links are.-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>-->
-  <!-- My link to the style sheet-->
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link href="./assets/style.css">
   <title>Weather Dashboard</title>
 </head>
 
-<!--Weather Dashboard Header Bar-->
-
-<body class="flex-colomn min-100-vh">
-  <header class="hero">
-    <h1 class="app-title">
-      <i class="fas fa-cloud-sun-rain"></i> Weather Dashboard
-    </h1>
+<body>
+  <header>
+    <h1>Weather Dashboard</h1>
+    <p id="date1"></p>
   </header>
+  <div id="container-fluid mainCon">
+    <div class="row">
+      <div class="col-sm-4 bg-light">
+        <div id="citySearch" class="row">
+          <label>Search for a city:</label>
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control textValue" placeholder="Enter city" id="cityinput">
+            <div>
+              <button class="btn btn-primary search" type="button">Search<i class='fas fa-search'></i></button>
+            </div>
+
+          </div>
+        </div>
+        <ul class="column" id="searchHistory">
+
+        </ul>
+
+      </div>
 
 
-  <main class="flex-row justify-space-between">
-    <div class="col-12 col-sm-12 col-md-4 float-left">
 
-      <div class="card">
-        <h3 class="card-header text-uppercase">Search for a city</h3>
-        <div id="user-form" class="card-body">
-          <input type="text" id="myInput" placeholder="City Name..." />
-          <button class="btn" id="searchBtn">Search</button>
+      <div class="col-sm-8">
+        <div class="today row ml-2 border border-dark rounded">
+          <section class="display">
+            <div class="wrapper">
+              <h2 class="cardTodayCityName"></h2>
+              <p id="date1"></p>
+              <p id="img"></p>
+              <p>Temp:
+                <span id="temp"></span>
+              </p>
+
+              <p>Humidity:
+                <span id="Humidity"></span>
+              </p>
+              <p>Wind:
+                <span id="wind"></span>
+              </p>
+              <p>Icon:
+                <span id="icon">
+                  <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
+                </span>
+              </p>
+
+            </div>
+          </section>
+        </div>
+        <div class=" col-sm-12" id="5day">
+          <h3>5-Day Forecast:</h3>
+        </div>
+
+        <div class="row ml-2 text-light">
+          <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
+            <p id="date01"></p>
+            <p id="img0"></p>
+            <p>Temp:
+              <span id="temp0"></span>
+            </p>
+
+            <p>Humidity:
+              <span id="Humidity0"></span>
+            </p>
+            <p>Wind:
+              <span id="Wind0"></span>
+            </p>
+            <p>Icon:
+              <span id="icon0">
+                <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
+              </span>
+            </p>
+          </div>
+
+          
+          <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
+            <p id="date2"></p>
+            <p id="img1"></p>
+            <p>Temp:
+              <span id="temp1"></span>
+            </p>
+
+            <p>Humidity:
+              <span id="Humidity1"></span>
+            </p>
+            <p>Wind:
+              <span id="Wind1"></span>
+            </p>
+            <p>Icon:
+              <span id="icon1">
+                <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
+              </span>
+            </p>
+          </div>
+
+          <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
+            <p id="date3"></p>
+            <p id="img2"></p>
+            <p>Temp:
+              <span id="temp2"></span>
+            </p>
+
+            <p>Humidity:
+              <span id="Humidity2"></span>
+            </p>
+            <p>Wind:
+              <span id="Wind2"></span>
+            </p>
+            <p>Icon:
+              <span id="icon2">
+                <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
+              </span>
+            </p>
+          </div>
+
+          <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
+            <p id="date4"></p>
+            <p id="img3"></p>
+            <p>Temp:
+              <span id="temp3"></span>
+            </p>
+
+            <p>Humidity:
+              <span id="Humidity3"></span>
+            </p>
+            <p>Wind:
+              <span id="Wind3"></span>
+            </p>
+          
+          <p>Icon:
+            <span id="icon3">
+              <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
+            </span>
+          </p>
+          </div>
+
+          <div class="col-sm-2 bg-primary forecast text-white ml-2 mb3 p-2 mt-2 rounded">
+            <p id="date5"></p>
+            <p id="img4"></p>
+            <p>Temp:
+              <span id="temp4"></span>
+            </p>
+
+            <p>Humidity:
+              <span id="Humidity4"></span>
+            </p>
+            <p>Wind:
+              <span id="Wind4"></span>
+            </p>
+          <p>Icon:
+            <span id="icon4">
+              <img src="http://openweathermap.org/img/wn/" alt img="alternative image">
+            </span>
+          </p>
+        </div>
         </div>
       </div>
-
-      <div class="card history">
-        <h3 class="card-header text-uppercase">Search History</h3>
-      </div>
     </div>
-    <!--This will be where the forecast of the current weather is.-->
-    <div class="col-12 col-sm-12 col-md-8 float-right">
-      <div>
-        <h2 class="subtitle text-uppercase bg-light">Current Weather</h2>
-        <div class="city"></div>
-      </div>
+  </div>
+  <link rel="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </script>
 
-      <!--Next is the five-day row-->
 
-      <div>
-        <h2 class="subtitle text-uppercase bg-light">5 Day forecast</h2>
-        <div class="five-day"></div>
-      </div>
-    </div>
-  </main>
-  <footer id="footer"></footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
     crossorigin="anonymous">
     </script>
-  <script src="assets/main.js"></script>
+  <script src="./assets/main.js"></script>
+
 </body>
 
-
 </html>
-
-<!--https://www.w3schools.com/xml/ajax_intro.asp
-    Here is an explanation of AJAX
-1. An event occurs in a web page (the page is loaded, a button is clicked)
-2. An XMLHttpRequest object is created by JavaScript
-3. The XMLHttpRequest object sends a request to a web server
-4. The server processes the request
-5. The server sends a response back to the web page
-6. The response is read by JavaScript
-7. Proper action (like page update) is performed by JavaScript-->

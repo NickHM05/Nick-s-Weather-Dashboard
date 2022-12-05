@@ -6,182 +6,132 @@
 //const apiKey = "&appid=9dd247337ad4b6b047a2f9a30dacaf93";
 
 //our new function to collect the user input and display it in search history over old one cuz this one will be responsive
-function addResult() {
+var apiKey = "9dd247337ad4b6b047a2f9a30dacaf93";
+var inputValue = document.getElementById('cityinput');
+var timeDisplayEl = $('#date1')
+var button = document.querySelector('.btn');
+var history = document.getElementById('searchHistory')
+var storage = []
 
-    inputCity = document.getElementById("myInput").value;
-    historyList = getInfo();
-    var searchCity = $("<div>")
-    searchCity.attr('id', inputCity)
-    searchCity.text(inputCity)
-    searchCity.addClass("h4")
 
-    if (historyList.includes(inputCity) === false) {
-        $(".history").append(searchCity)
-    }
-    $('.subtitle').attr("style", "display:inline")
-    addInfo(inputCity);
+function displayTime() {
+    var reformatDate = dayjs().format('dddd, MMMM D, YYYY');
+    timeDisplayEl.text(reformatDate);
+}
+setInterval(displayTime,
 
-};
-//adding an event listener to search history code item
-$(".history").on('click', function (event) {
-    event.preventDefault();
-    $(".subtitle").attr("style", "display:inline")
-    document.getElementById("myInput").value = event.target.id;
-    getResult();
-});
+    1000);
 
-//adding an event listener to search button to make my code more simple to understand this time and the event listener will go to the search button
-document.getElementById("searchBtn").addEventListener("click", addResult);
-document.getElementById("searchBtn").addEventListener("click", getResult);
 
-//WHEN I view current weather...
-//THEN I am presented with the city name, the date, the icon of weather conditions, the temperature, the humidity, the wind speed
-function getResult() {
+var fiveDay = [];
 
-    $("five-day").empty();
-    $(".city").empty()
+for (var i = 0; i < 5; i++) {
+    let forecastDate = dayjs().add(i + 1, 'days').format('MMMM D, YYYY');
+    fiveDay.push(forecastDate);
+}
+console.log(fiveDay)
 
-    inputCity = document.getElementById("myInput").value;
-    var countryCode = "US";
-    var cityCode = inputCity;
 
-    var geoLon;
-    var geoLat;
 
-    var cityname = $("<h>")
-    cityname.addClass("h3")
-    var temp = $("<div>")
-    var humidity = $("<div>")
-    var wind = $("<div>")
-    var icon = $("<img>")
-    icon.addClass("icon");
-    var dateTime = $("<div>")
 
-    $(".city").addClass("list-group")
-    $(".city").append(cityname)
-    $(".city").append(dateTime)
-    $(".city").append(icon)
-    $(".city").append(temp)
-    $(".city").append(wind)
-    $(".city").append(humidity)
 
-    var thegeourl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityCode + "," + countryCode + "&limit=5&appid=9dd247337ad4b6b047a2f9a30dacaf93"
-    //console.log(thegeourl)
-
-    //We then pass the requestUrl variable as an argument to the fetch() method, like in the following code:
-    fetch(thegeourl)
-
-        //converts the response into JSON. This will return the JSON formatted response as ahead in the code
-        .then(function (response) {
-            return response.json();
-        })
-
-        .then(function (data) {
-            geoLon = data[0].lon;
-            geoLat = data[0].lat;
-
-            console.log(geoLon)
-            console.log(geoLat)
-            //use Latti and Longi to fetch the weather
-            var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + geoLat + "&lon=" + geoLon + "&appid=9dd247337ad4b6b047a2f9a30dacaf93";
-
-            fetch(weatherUrl)
-                //console.log(weatherUrl)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    //console.log(data)
-
-                    weatherIcon = data.current.weather[0].icon;
-                    imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
-                    icon.attr('src', imgSrc)
-
-                    cityname.text(cityCode);
-                    //translate utc to the date
-                    var date = new Date(date.current.dt * 1000);
-                    dateTime.text("(" + (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear() + ")");
-
-                    temp.text("Temperature: " + data.curent.temp + "°F");
-                    humidity.text("Humidity: " + data.current.humidity + " %");
-                    wind.text("Wind Speed: " + data.list.current.wind_speed + " MPH");
-
-                    // WHEN I view future weather conditions for that city
-                    // THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-                    //using the data from previous fetch and display the 5 day weather data
-                    for (var i = 1; i < 6; i++) {
-
-                        var blueContainer = $("<div>")
-                        this["futureDate" + i] = $("<h>")
-                        this["futureIcon" + i] = $("<img>")
-                        this["futureTemp" + i] = $("<div>")
-                        this["futureWind" + i] = $("<div>")
-                        this["futureHumidity" + i] = $("<div>")
-
-                        //translate utc to the date
-                        this["forecastDay" + i] = new Date(data.daily[i].dt * 1000);
-
-                        (this["futureDate" + i]).text(((this["forecastDay" + i]).getMonth() + 1) + "/" + (this["forecastDay" + i]).getDate() + "/" + (this["forecastDay" + i]).getFullYear());
-                        (this["futureTemp" + i]).text("Temperature: " + data.daily[i].temp.day + " F");
-                        (this["futureWind" + i]).text("Wind: " + data.daily[i].wind_speed + " MPH");
-                        (this["futureHumidity" + i]).text("Humidity: " + data.daily[i].humidity + " %");
-                        (this["weatherIcon" + i]) = data.daily[i].weather[0].icon;
-
-                        DateimgSrc = "https://openweathermap.org/img/wn/" + (this["weatherIcon" + i]) + ".png";
-                        (this["futureIcon" + i]).attr('src', DateimgSrc)
-
-                        $(".five-day").append(blueContainer)
-                        blueContainer.append((this["futureDate" + i]));
-                        blueContainer.append((this["futureIcon" + i]));
-                        blueContainer.append((this["futureTemp" + i]));
-                        blueContainer.append((this["futureWind" + i]));
-                        blueContainer.append((this["futureHumidity" + i]));
-
-                        blueContainer.addClass("weather-card")
-                    }
-
-                })
-        })
+function conversion(val) {
+  return ((val-273.15)* 1.80 +32).toFixed(2)
 }
 
+button.addEventListener('click', getWeather);
+button.addEventListener('click', setStorage);
+button.addEventListener('click', displaydata)
 
 
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
+function getWeather() {
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputValue.value + "&appid=" + apiKey)
+        .then((response) => {
+            response.json().then((data) => {
+                var lat = data.coord.lat
+                var long = data.coord.lon
+                fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}`)
+                    .then(response => response.json())
+                    .then(day5data => {
+console.log(day5data)
 
-//get local storage info
-function getInfo() {
-    var currentList = localStorage.getItem("city");
-    if (currentList !== null) {
-        freshList = JSON.parse(currentList);
-        return freshList;
-    } else {
-        freshList = [];
-    }
-    return freshList;
+
+                        document.querySelector(".cardTodayCityName").innerHTML = day5data.city.name;
+
+                        document.querySelector("#temp").innerHTML = `<span>${conversion(day5data.list[0].main.temp)} F</span>`;
+                        document.querySelector('#Humidity').innerHTML = `<span>${day5data.list[0].main.humidity} %<span>`;
+                        document.querySelector('#wind').innerHTML = `<span>${day5data.list[0].wind.speed} m/s<span>`;
+                        document.querySelector('#icon').innerHTML = `<img src=http://openweathermap.org/img/wn/${day5data.list[0].weather[0].icon}.png>`;
+
+
+
+                        //Day1   
+                        document.querySelector("#date01").innerHTML = fiveDay[0];
+                        document.querySelector("#temp0").innerHTML = `<span>${conversion(day5data.list[6].main.temp)} F</span>`;
+                        document.querySelector('#Humidity0').innerHTML = `<span>${day5data.list[6].main.humidity} %<span>`;
+                        document.querySelector('#Wind0').innerHTML = `<span>${day5data.list[6].wind.speed} m/s<span>`;
+                        document.querySelector('#icon0').innerHTML = `<img src=http://openweathermap.org/img/wn/${day5data.list[6].weather[0].icon}.png>`;
+
+                        //Day2
+                        document.querySelector("#date2").innerHTML = fiveDay[1];
+                        document.querySelector("#temp1").innerHTML = `<span>${conversion(day5data.list[14].main.temp)} F</span>`;
+                        document.querySelector('#Humidity1').innerHTML = `<span>${day5data.list[14].main.humidity} %<span>`;
+                        document.querySelector('#Wind1').innerHTML = `<span>${day5data.list[14].wind.speed} m/s<span>`;
+                        document.querySelector('#icon1').innerHTML = `<img src=http://openweathermap.org/img/wn/${day5data.list[14].weather[0].icon}.png>`;
+
+                        //Day3
+                        document.querySelector("#date3").innerHTML = fiveDay[2];
+                        document.querySelector("#temp2").innerHTML = `<span>${conversion(day5data.list[22].main.temp)} F</span>`;
+                        document.querySelector('#Humidity2').innerHTML = `<span>${day5data.list[22].main.humidity} %<span>`;
+                        document.querySelector('#Wind2').innerHTML = `<span>${day5data.list[22].wind.speed} m/s<span>`;
+                        document.querySelector('#icon2').innerHTML = `<img src=http://openweathermap.org/img/wn/${day5data.list[22].weather[0].icon}.png>`;
+                        //Day4
+                        document.querySelector("#date4").innerHTML = fiveDay[3];
+                        document.querySelector("#temp3").innerHTML = `<span>${conversion(day5data.list[30].main.temp)} F</span>`;
+                        document.querySelector('#Humidity3').innerHTML = `<span>${day5data.list[30].main.humidity} %<span>`;
+                        document.querySelector('#Wind3').innerHTML = `<span>${day5data.list[30].wind.speed} m/s<span>`;
+                        document.querySelector('#icon3').innerHTML = `<img src=http://openweathermap.org/img/wn/${day5data.list[30].weather[0].icon}.png>`;
+
+                        //Day5
+                        document.querySelector("#date5").innerHTML = fiveDay[4];
+                        document.querySelector("#temp4").innerHTML = `<span>${conversion(day5data.list[38].main.temp)} F</span>`;
+                        document.querySelector('#Humidity4').innerHTML = `<span>${day5data.list[38].main.humidity} %<span>`;
+                        document.querySelector('#Wind4').innerHTML = `<span>${day5data.list[38].wind.speed} m/s<span>`;
+                        document.querySelector('#icon4').innerHTML = `<img src=http://openweathermap.org/img/wn/${day5data.list[38].weather[0].icon}.png>`;
+                        //var weatherURL = "http://openweathermap.org/img/wn/";
+
+
+
+                    });
+            });
+        });
+
 }
-//add info to local
-function addInfo(n) {
-    var addedList = getInfo();
 
-    if (historyList.includes(inputCity) === false) {
-        addedList.push(n);
-    }
+var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
-    localStorage.setItem("city", JSON.stringify(addedList));
+function setStorage() {
+    var search = inputValue.value;
+    getWeather(search);
+    searchHistory.push(search);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+
+}
+function displaydata() {
+
+    document.querySelector("#searchHistory").innerHTML = `<button class="btn btn-primary">${searchHistory[0]}</button>`;
+    displayUpdates();
 };
-//render history
-function renderInfo() {
-    var historyList = getInfo();
-    for (var i = 0; i < historyList.length; i++) {
-        var inputCity = historyList[i];
-        var searchCity = $("<div>")
-        searchCity.attr('id', inputCity)
-        searchCity.text(inputCity)
-        searchCity.addClass("h4")
+//function displayUpdates()
 
-        $(".history").append(searchCity)
-    }
-};
+/*function displayUpdates (){
+    // Clearing any previously made child elements 
+    if (firstLoad === false) {
+        for (let i = 0; i < 5; i++) {
+            tableContainer.removeChild(tableContainer.children[0]);
+    } 
+    
+    };
 
-renderInfo();
+}
+*/
